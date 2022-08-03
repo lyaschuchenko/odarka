@@ -84,27 +84,27 @@ export default new NeuralCorpus({
 					switch (currencyCode) {
 						case 'uah': {
 							const rate = await getRatePrivatBank('usd');
-							response.answer = 'За один бакс просять ${rate} гривень.';
+							response.answer = `За один бакс просять ${rate} гривень.`;
 							break;
 						}
 						case 'usd':
 						case 'eur': {
 							const rate = await getRatePrivatBank(currencyCode);
-							response.answer = 'Ціна на даний момент - ${rate}₴.';
+							response.answer = `Ціна на даний момент - ${rate}₴.`;
 							break;
 						}
 						case 'rub': {
-							response.answer = 'Вони думали, що на дні, аж тут знизу постукали.';
+							response.answer = `Вони думали, що на дні, аж тут знизу постукали.`;
 							break;
 						}
 						default: {
 							const rate = await getRateCoinBase(currencyCode);
-							response.answer = 'Ціна на даний момент - ${rate}$.';
+							response.answer = `Ціна на даний момент - ${rate}$.`;
 							break;
 						}
 					}
 				} catch (err) {
-					response.answer = 'Побачивши курс, ти вмреш від крінжі.';
+					response.answer = `Побачивши курс, ти вмреш від крінжі.`;
 				}
 			},
 		},
