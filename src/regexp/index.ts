@@ -263,7 +263,7 @@ const replies: Array<Reply> = [
 	{
 		intent: 'dambass',
 		triggers: [
-			rgx.matchFull(/(8 лет|восе(и)мь лет)/i),
+			rgx.matchFull(/(8 лет|восемь лет)/i),
 		],
 		responses: [
 			'Я за рульом була.',
@@ -273,7 +273,7 @@ const replies: Array<Reply> = [
 	{
 		intent: 'dambass',
 		triggers: [
-			rgx.matchPart(/бомбили/i),
+			rgx.matchFull(/бомбили/i),
 		],
 		responses: [
 			'Була за штурвалом.',
