@@ -4,7 +4,7 @@
 
 > Всі персонажі є вигаданими, та будь-який збіг з реально живими або померлими людьми випадковий. Позиції, вірування та точки зору висловлені цим ботом можуть різнитись з позиціями, віруваннями та точками зору його розробників.
 
-!(https://github.com/lyaschuchenko/odarka/blob/master/Odarka.png?raw=true)
+![Одарка](https://github.com/lyaschuchenko/odarka/blob/master/Odarka.png?raw=true)
 
 Інсталяція
 ==========
