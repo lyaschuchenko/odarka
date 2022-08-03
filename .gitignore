@@ -1,0 +1,24 @@
+# Installation:
+node_modules/
+npm-debug.log
+
+# Redis Data:
+/data/
+
+# Logs:
+/logs/
+
+# Build results:
+dist/
+
+# MacOS shit:
+.DS_Store
+
+# Environment data:
+.env
+
+# Sublime SFTP config:
+sftp-config.json
+
+# Logs:
+logs/

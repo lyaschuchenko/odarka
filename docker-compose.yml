@@ -1,0 +1,47 @@
+version: "3.3"
+services:
+
+  # Petlyuryk: Redis Stack (RedisJSON, RediJSON and RedisInsight):
+  redis:
+    image: redis/redis-stack
+    # container_name: petlyuryk-redis
+    restart: unless-stopped
+    logging:
+      driver: none
+    volumes:
+      - ./data/redis:/data
+    ports:
+      - "${PETLYURYK_INSIGHT_PORT:-2206}:8001"
+    environment:
+      - REDIS_ARGS=--save 60 1
+
+  # Petlyuryk: Bot:
+  bot:
+    # container_name: petlyuryk-bot
+    restart: unless-stopped
+    build: .
+    depends_on:
+      - redis
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./logs:/app/logs
+    ports:
+      - "${PETLYURYK_STATS_PORT:-2205}:8001"
+    environment:
+
+      # Must be provided by .env file:
+      - ODARKA_TELEGRAM_TOKEN
+
+      # May be overriden - seconds after message information is removed from Redis.
+      # Default is one week.
+      - PETLYURYK_PRIVACY_EXPIRE=604800
+
+      # Internal Docker Compose bindings:
+      - PETLYURYK_REDIS_HOST=redis
+      - PETLYURYK_REDIS_PORT=6379
+
+      # Node.JS variables:
+      - NODE_NO_WARNINGS=1
+      - NTBA_FIX_319=1
+      - NTBA_FIX_350=1

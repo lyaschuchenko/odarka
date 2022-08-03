@@ -1,0 +1,83 @@
+{
+  "name": "odarka",
+  "version": "1.0.0",
+  "author": "lyaschuchenko",
+  "license": "MIT",
+  "repository": "https://github.com/lyaschuchenko/odarka",
+  "description": "Nationalistic Ukrainian telegram bot.",
+  "scripts": {
+    "prepare": "husky install",
+    "start": "npm run start:dev",
+    "start:dev": "nodemon -r dotenv/config ./src/index.ts",
+    "todo": "leasot -x src/**/*.ts public/**/*.js",
+    "lint": "eslint src public --ext .ts,.js --max-warnings 8 --color",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "jest --verbose --all --color ./src",
+    "test:watch": "jest --watchAll ./src",
+    "docker": "docker-compose up --build --remove-orphans || exit 0",
+    "deploy": "docker-compose up --build -d",
+    "logger": "docker-compose logs --tail=50 -f",
+    "killer": "docker-compose down"
+  },
+  "dependencies": {
+    "@nlpjs/basic": "^4.22.14",
+    "@nlpjs/core": "^4.22.7",
+    "@nlpjs/directline-connector": "^4.22.12",
+    "@nlpjs/express-api-server": "^4.22.14",
+    "@nlpjs/lang-ru": "^4.22.7",
+    "@nlpjs/lang-uk": "^4.22.7",
+    "@nlpjs/language": "^4.22.7",
+    "@nlpjs/nlp": "^4.22.9",
+    "@nlpjs/sentiment": "^4.22.7",
+    "@node-redis/json": "^1.0.2",
+    "@node-redis/search": "^1.0.5",
+    "async-mutex": "^0.3.2",
+    "axios": "^0.25.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.3",
+    "express-async-errors": "^3.1.1",
+    "ioredis": "^5.0.4",
+    "jest-extended": "^3.0.1",
+    "leasot": "^13.1.0",
+    "lodash": "^4.17.21",
+    "mongodb": "^4.3.1",
+    "node-telegram-bot-api": "^0.54.0",
+    "nodemon": "^2.0.19",
+    "redis": "^4.0.6",
+    "rss-parser": "^3.12.0",
+    "telejson": "^5.3.3",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.2",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/bluebird": "^3.5.36",
+    "@types/express": "^4.17.13",
+    "@types/jest": "^27.4.0",
+    "@types/lodash": "^4.14.172",
+    "@types/node-telegram-bot-api": "^0.51.4",
+    "@types/redis": "^2.8.31",
+    "@types/string-format": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
+    "eslint": "^8.7.0",
+    "husky": "^7.0.4",
+    "jest": "^27.4.7",
+    "lint-staged": "^13.0.3",
+    "ts-jest": "^27.1.3"
+  },
+  "lint-staged": {
+    "*.ts": "eslint --fix"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "setupFilesAfterEnv": [
+      "jest-extended/all"
+    ],
+    "roots": [
+      "./src"
+    ]
+  }
+}
